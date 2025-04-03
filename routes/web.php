@@ -19,7 +19,7 @@ Route::get('/','PostsController@index')->name('top');
 
 Route::get('/layout','PostsController@layout')->name('layout');
 
-Auth::routes(['verify' => true]);
+Auth::routes();
 
 Route::post('/store', 'UserRegisterController@store')->name('store');
 
@@ -33,7 +33,7 @@ Route::get('/serch','PostsController@serch')->name('serch');
 
 Route::get('/mypage', 'MyPageController@index')->name('mypage');
 
-// Route::get('/userregist', 'UserRegisterController@index')->name('userregist');
+Route::get('/userregist', 'UserRegisterController@index')->name('userregist');
 
 // マイページを表示する
 Route::group(['prefix'=>'mypages' /*, 'middleware'=>'auth' */ ],function(){
@@ -45,7 +45,4 @@ Route::group(['prefix'=>'mypages' /*, 'middleware'=>'auth' */ ],function(){
 //掲示板を表示する
 Route::get('/boards', 'BoardsController@index')->name('boards');
 Route::post('/create', 'BoardsController@create')->name('boards');
-
-Route::get('/thread', 'ThreadController@index')->name('thread');
-
 Route::get('/boards/{id}', 'BoardsController@show')->name('boards');

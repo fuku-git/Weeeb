@@ -25,7 +25,7 @@ class LoginController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = '/mypage';
+    protected $redirectTo = '/';
 
     /**
      * Create a new controller instance.
@@ -37,15 +37,15 @@ class LoginController extends Controller
         $this->middleware('guest')->except('logout');
     }
 
-    // public function authenticate()
-    // {
-    //     $email = 'guest@guest.com';
-    //     $password = 'guestpass';
+    public function authenticate()
+    {
+        $email = 'guest@guest.com';
+        $password = 'guestpass';
 
-    //     if (\Auth::attempt(['email' => $email, 'password' => $password])) {
-    //         // 認証に成功した
-    //         return redirect('/mypage');
-    //     }
-    //     return back();
-    // }
+        if (\Auth::attempt(['email' => $email, 'password' => $password])) {
+            // 認証に成功した
+            return redirect('/mypage');
+        }
+        return back();
+    }
 }
